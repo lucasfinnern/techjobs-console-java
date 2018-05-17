@@ -2,6 +2,7 @@ package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -61,7 +62,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -111,6 +112,31 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs.isEmpty()) {
+            System.out.println("No matches");
+        }else{
+            for (int i = 0; i <= someJobs.size(); i++) {
+                System.out.println("\n*****");
+                //System.out.println(someJobs.get(i));
+                for (Map.Entry<String, String> entry : someJobs.get(i).entrySet()) {
+                    if (entry.getKey().equals("position type")) {
+                        System.out.println("position type: " + entry.getValue());
+                    }
+                    if (entry.getKey().equals("name")) {
+                        System.out.println("name: " + entry.getValue());
+                    }
+                    if (entry.getKey().equals("employer")) {
+                        System.out.println("employer: " + entry.getValue());
+                    }
+                    if (entry.getKey().equals("location")) {
+                        System.out.println("location: " + entry.getValue());
+                    }
+                    if (entry.getKey().equals("core competency")) {
+                        System.out.println("core competency: " + entry.getValue());
+                    }
+                }
+            }
+            System.out.println("*****");
+        }
     }
 }
