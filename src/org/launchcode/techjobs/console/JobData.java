@@ -129,6 +129,7 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> filteredJobs = new ArrayList<>();
+        ArrayList<HashMap<String, String>> duplicateJobs = new ArrayList<>();
         String[] columns = new String[]{"name", "employer", "location", "position type", "core competency"};
         int counter = 0;
 
@@ -139,12 +140,14 @@ public class JobData {
                 String aValue = row.get(columns[i]);
 
                 if (aValue.toLowerCase().contains(value.toLowerCase())) {
-                    filteredJobs.add(row);
+                    if (!duplicateJobs.contains(row)) {
+                        filteredJobs.add(row);
+                        duplicateJobs.add(row);
+                    }
                 }
                 counter++;
             }
         }
         return filteredJobs;
     }
-
 }

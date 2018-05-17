@@ -115,9 +115,8 @@ public class TechJobs {
         if (someJobs.isEmpty()) {
             System.out.println("No matches");
         }else{
-            for (int i = 0; i <= someJobs.size(); i++) {
+            for (int i = 0; i < someJobs.size(); i++) {
                 System.out.println("\n*****");
-                //System.out.println(someJobs.get(i));
                 for (Map.Entry<String, String> entry : someJobs.get(i).entrySet()) {
                     if (entry.getKey().equals("position type")) {
                         System.out.println("position type: " + entry.getValue());
