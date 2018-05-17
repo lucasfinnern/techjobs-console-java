@@ -131,7 +131,6 @@ public class JobData {
         ArrayList<HashMap<String, String>> filteredJobs = new ArrayList<>();
         ArrayList<HashMap<String, String>> duplicateJobs = new ArrayList<>();
         String[] columns = new String[]{"name", "employer", "location", "position type", "core competency"};
-        int counter = 0;
 
         for (int i = 0; i < columns.length; i++) {
 
@@ -145,7 +144,6 @@ public class JobData {
                         duplicateJobs.add(row);
                     }
                 }
-                counter++;
             }
         }
         return filteredJobs;
